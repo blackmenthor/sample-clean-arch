@@ -38,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: [
-              const Text('Login here'),
+              const Text('Register here'),
               const SizedBox(height: 16,),
               TextField(
                 decoration: const InputDecoration(
@@ -97,7 +97,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 width: double.infinity,
                 child: MaterialButton(
                   color: Colors.blue,
-                  onPressed: () async {
+                  disabledColor: Colors.blue.withOpacity(0.5),
+                  onPressed: !btnEnabled ? null : () async {
                     final username = _username;
                     final password = _password;
                     final firstName = _firstName;

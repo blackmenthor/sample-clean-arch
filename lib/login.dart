@@ -82,6 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: double.infinity,
                 child: MaterialButton(
                   color: Colors.blue,
+                  disabledColor: Colors.blue.withOpacity(0.5),
                   onPressed: !btnEnabled
                       ? null
                       : () async {
