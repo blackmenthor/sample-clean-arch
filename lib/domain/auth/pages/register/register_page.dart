@@ -1,9 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_arch/api.dart';
-import 'package:flutter_clean_arch/dialogs.dart';
-import 'package:flutter_clean_arch/home.dart';
-import 'package:flutter_clean_arch/login.dart';
+import 'package:go_router/go_router.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({
@@ -99,47 +96,47 @@ class _RegisterPageState extends State<RegisterPage> {
                   color: Colors.blue,
                   disabledColor: Colors.blue.withOpacity(0.5),
                   onPressed: !btnEnabled ? null : () async {
-                    final username = _username;
-                    final password = _password;
-                    final firstName = _firstName;
-
-                    showLoadingDialog(context: context);
-
-                    try {
-                      await api.register(
-                        username: username!,
-                        firstName: firstName!,
-                        password: password!,
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          backgroundColor: Colors.green,
-                          content: Text(
-                            'Register success!',
-                          ),
-                        ),
-                      );
-
-                      Navigator.pop(context);
-
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (ctx) => const HomePage(),
-                        ),
-                      );
-                    } catch (ex) {
-                      print(ex.toString());
-                      Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          backgroundColor: Colors.redAccent,
-                          content: Text(
-                            'Failed to register!',
-                          ),
-                        ),
-                      );
-                    }
+                    // final username = _username;
+                    // final password = _password;
+                    // final firstName = _firstName;
+                    //
+                    // showLoadingDialog(context: context);
+                    //
+                    // try {
+                    //   await api.register(
+                    //     username: username!,
+                    //     firstName: firstName!,
+                    //     password: password!,
+                    //   );
+                    //   ScaffoldMessenger.of(context).showSnackBar(
+                    //     const SnackBar(
+                    //       backgroundColor: Colors.green,
+                    //       content: Text(
+                    //         'Register success!',
+                    //       ),
+                    //     ),
+                    //   );
+                    //
+                    //   Navigator.pop(context);
+                    //
+                    //   Navigator.pushReplacement(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (ctx) => const HomePage(),
+                    //     ),
+                    //   );
+                    // } catch (ex) {
+                    //   print(ex.toString());
+                    //   Navigator.pop(context);
+                    //   ScaffoldMessenger.of(context).showSnackBar(
+                    //     const SnackBar(
+                    //       backgroundColor: Colors.redAccent,
+                    //       content: Text(
+                    //         'Failed to register!',
+                    //       ),
+                    //     ),
+                    //   );
+                    // }
                   },
                   child: const Text(
                     'Register',
@@ -159,13 +156,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     TextSpan(
                       text: 'Login here',
                       recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Navigator.pushReplacement(context,
-                            MaterialPageRoute(
-                              builder: (ctx) => const LoginPage(),
-                            ),
-                          );
-                        },
+                        ..onTap = () => context.replace('/login'),
                     ),
                   ],
                 ),

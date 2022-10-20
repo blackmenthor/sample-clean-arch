@@ -1,6 +1,7 @@
+import 'package:flutter_clean_arch/core/di/di.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final prefs = Prefs();
+final prefs = locator.get<Prefs>();
 
 bool isLoggedIn() {
   return prefs.getToken() != null;

@@ -1,0 +1,19 @@
+{
+    "@@locale": "en",
+    "counterAppBarTitle": "Counter",
+    "@counterAppBarTitle": {
+        "description": "Text shown in the AppBar of the Counter Page"
+    },
+    "responseNotFound": "Cannot found the resources you requested",
+    "responseBadRequest": "There are some problems with your request",
+    "defaultErrorMessage": "There are problems fetching your request",
+    "noInternetErrorMessage": "You're not connected to internet",
+    "averageRating": "Avg Rating",
+    "voteCount": "Votes",
+    "movieDetail": "Movie Detail",
+    "overview": "Overview",
+    "movieListPage": "Movie List Page",
+    "noItemsAvailable": "No items available",
+    "initializingApp": "Initializing App, please wait...",
+    "systemNotAvailable": "We're sorry, our servers are not available at the moment"
+}

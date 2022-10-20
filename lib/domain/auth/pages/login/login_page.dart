@@ -1,9 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_arch/api.dart';
-import 'package:flutter_clean_arch/dialogs.dart';
-import 'package:flutter_clean_arch/home.dart';
-import 'package:flutter_clean_arch/register.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -86,46 +83,46 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: !btnEnabled
                       ? null
                       : () async {
-                    final username = _username;
-                    final password = _password;
-
-                    showLoadingDialog(context: context);
-
-                    try {
-                      await api.login(
-                        username: username!,
-                        password: password!,
-                      );
-
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          backgroundColor: Colors.green,
-                          content: Text(
-                            'Login success!',
-                          ),
-                        ),
-                      );
-
-                      Navigator.pop(context);
-
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (ctx) => const HomePage(),
-                        ),
-                      );
-                    } catch (ex) {
-                      print(ex.toString());
-                      Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                            backgroundColor: Colors.redAccent,
-                            content: Text(
-                              'Wrong username or password!',
-                            ),
-                        ),
-                      );
-                    }
+                    // final username = _username;
+                    // final password = _password;
+                    //
+                    // showLoadingDialog(context: context);
+                    //
+                    // try {
+                    //   await api.login(
+                    //     username: username!,
+                    //     password: password!,
+                    //   );
+                    //
+                    //   ScaffoldMessenger.of(context).showSnackBar(
+                    //     const SnackBar(
+                    //       backgroundColor: Colors.green,
+                    //       content: Text(
+                    //         'Login success!',
+                    //       ),
+                    //     ),
+                    //   );
+                    //
+                    //   Navigator.pop(context);
+                    //
+                    //   Navigator.pushReplacement(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (ctx) => const HomePage(),
+                    //     ),
+                    //   );
+                    // } catch (ex) {
+                    //   print(ex.toString());
+                    //   Navigator.pop(context);
+                    //   ScaffoldMessenger.of(context).showSnackBar(
+                    //     const SnackBar(
+                    //         backgroundColor: Colors.redAccent,
+                    //         content: Text(
+                    //           'Wrong username or password!',
+                    //         ),
+                    //     ),
+                    //   );
+                    // }
                   },
                   child: const Text(
                     'Login',
@@ -145,13 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                     TextSpan(
                       text: 'Register here',
                       recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Navigator.pushReplacement(context,
-                                MaterialPageRoute(
-                                    builder: (ctx) => const RegisterPage(),
-                                ),
-                            );
-                          },
+                          ..onTap = () => context.replace('/register'),
                     ),
                   ],
                 ),
