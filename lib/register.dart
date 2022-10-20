@@ -111,6 +111,14 @@ class _RegisterPageState extends State<RegisterPage> {
                         firstName: firstName!,
                         password: password!,
                       );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text(
+                            'Register success!',
+                          ),
+                        ),
+                      );
 
                       Navigator.pop(context);
 
@@ -121,6 +129,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       );
                     } catch (ex) {
+                      print(ex.toString());
+                      Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           backgroundColor: Colors.redAccent,
@@ -132,7 +142,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     }
                   },
                   child: const Text(
-                    'Login',
+                    'Register',
                     style: TextStyle(
                       color: Colors.white,
                     ),

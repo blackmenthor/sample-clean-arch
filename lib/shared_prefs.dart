@@ -69,4 +69,8 @@ class Prefs {
     return sharedPreferences?.setString(PrefsKeys.firstName.name, firstName);
   }
 
+  Future<bool>? logout() {
+    return sharedPreferences?.clear();
+  }
+
 }

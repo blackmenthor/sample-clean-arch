@@ -9,8 +9,8 @@ class User {
 
   final String id;
   final String username;
-  final String firstName;
-  final String lastName;
+  final String? firstName;
+  final String? lastName;
 
 }
 

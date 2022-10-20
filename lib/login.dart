@@ -97,6 +97,15 @@ class _LoginPageState extends State<LoginPage> {
                         password: password!,
                       );
 
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text(
+                            'Login success!',
+                          ),
+                        ),
+                      );
+
                       Navigator.pop(context);
 
                       Navigator.pushReplacement(
@@ -106,6 +115,8 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       );
                     } catch (ex) {
+                      print(ex.toString());
+                      Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                             backgroundColor: Colors.redAccent,
