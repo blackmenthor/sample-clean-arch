@@ -8,7 +8,6 @@ import 'package:path_provider/path_provider.dart';
 
 final hiveInstance = locator<HiveService>();
 
-// TODO: OPTIMIZE
 final hiveBoxNames = <Type, String>{
   Journal: 'Journal',
 };

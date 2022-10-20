@@ -15,5 +15,6 @@
     "movieListPage": "Movie List Page",
     "noItemsAvailable": "No items available",
     "initializingApp": "Initializing App, please wait...",
-    "systemNotAvailable": "We're sorry, our servers are not available at the moment"
+    "systemNotAvailable": "We're sorry, our servers are not available at the moment",
+    "loginSuccess": "Logged in successfully!"
 }

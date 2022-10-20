@@ -21,6 +21,27 @@ class JournalListPage extends StatelessWidget {
       create: (_) => JournalListCubit(),
       child: BaseLoadableScaffold<BasePaginatedResponse<Journal>, JournalListCubit>(
         title: 'Journal List Page',
+        appbarActions: [
+          // TODO:
+          // IconButton(
+          //     onPressed: () async {
+          //       // TODO: to add journal page
+          //     },
+          //     icon: const Icon(
+          //       Icons.add,
+          //       size: 18.0,
+          //     ),
+          // ),
+          // IconButton(
+          //     onPressed: () {
+          //       // TODO: to logout dialog
+          //     },
+          //     icon: const Icon(
+          //       Icons.logout,
+          //       size: 18.0,
+          //     ),
+          // ),
+        ],
         customLoadingWidget: const DefaultAppShimmer(),
         onRetry: (ctx) => ctx.read<JournalListCubit>().kickOff(),
         stateBuilder: (ctx, state) {

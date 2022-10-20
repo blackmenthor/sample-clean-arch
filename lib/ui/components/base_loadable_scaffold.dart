@@ -21,6 +21,7 @@ class BaseLoadableScaffold<T, R extends BaseLoadableCubit<T>>
     this.floatingActionButton,
     this.customLoadingWidget,
     this.onRetry,
+    this.appbarActions,
   }) : super(key: key);
 
   final Widget Function(BuildContext, T?)? builder;
@@ -32,11 +33,13 @@ class BaseLoadableScaffold<T, R extends BaseLoadableCubit<T>>
   final Widget? floatingActionButton;
   final Widget? customLoadingWidget;
   final void Function(BuildContext)? onRetry;
+  final List<Widget>? appbarActions;
 
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
       title: title,
+      appbarActions: appbarActions,
       floatingActionButton: floatingActionButton,
       appBarBottom: appBarBottom == null
           ? null

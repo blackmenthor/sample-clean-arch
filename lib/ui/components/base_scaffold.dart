@@ -9,12 +9,14 @@ class BaseScaffold extends StatelessWidget {
     this.title,
     this.appBarBottom,
     this.floatingActionButton,
+    this.appbarActions,
   }) : super(key: key);
 
   final String? title;
   final PreferredSizeWidget? appBarBottom;
   final Builder builder;
   final Widget? floatingActionButton;
+  final List<Widget>? appbarActions;
 
   bool get withAppbar => title != null || appBarBottom != null;
 
@@ -27,6 +29,7 @@ class BaseScaffold extends StatelessWidget {
             )
           : null,
       bottom: appBarBottom != null ? appBarBottom! : null,
+      actions: appbarActions,
     );
   }
 

@@ -5,10 +5,10 @@ class AppTheme {
 
   ThemeData get darkTheme => ThemeData(
     colorScheme: ColorScheme(
-      onPrimary: AppColors.virdianGreen,
-      onSecondary: AppColors.phthaloGreen,
-      primary: AppColors.virdianGreen,
-      secondary: AppColors.phthaloGreen,
+      primary: AppColors.orangePeel,
+      onPrimary: AppColors.white,
+      secondary: AppColors.virdianGreen,
+      onSecondary: AppColors.virdianGreen.withOpacity(0.5),
       surface: Colors.grey.withOpacity(0.25),
       onSurface: Colors.grey.withOpacity(0.25),
       background: Colors.black.withOpacity(0.5),
@@ -29,10 +29,10 @@ class AppTheme {
 
   ThemeData get lightTheme => ThemeData(
     colorScheme: ColorScheme(
-      onPrimary: AppColors.teaGreen,
-      onSecondary: AppColors.canary,
-      primary: AppColors.teaGreen,
-      secondary: AppColors.canary,
+      primary: AppColors.canary,
+      onPrimary: AppColors.black,
+      secondary: AppColors.teaGreen,
+      onSecondary: AppColors.teaGreen.withOpacity(0.5),
       surface: Colors.grey.withOpacity(0.25),
       onSurface: Colors.grey.withOpacity(0.25),
       background: Colors.white,
@@ -42,7 +42,7 @@ class AppTheme {
       brightness: Brightness.light,
     ),
     iconTheme: const IconThemeData(
-      color: Colors.black,
+      color: Colors.white,
     ),
     textTheme: const TextTheme(
       headline1: TextStyle(

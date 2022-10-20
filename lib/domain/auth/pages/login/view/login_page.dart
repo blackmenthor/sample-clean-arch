@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_arch/core/cubit/states.dart';
 import 'package:flutter_clean_arch/domain/auth/pages/login/cubit/login_cubit.dart';
 import 'package:flutter_clean_arch/domain/auth/pages/login/cubit/login_state.dart';
+import 'package:flutter_clean_arch/ui/extensions/context_extensions.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatelessWidget {
@@ -61,30 +62,13 @@ class LoginPage extends StatelessWidget {
     return BlocConsumer<LoginCubit, BaseCubitState>(
       listener: (ctx, state) {
         if (state is ErrorLoginState) {
-          // TODO: move to function
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.redAccent,
-              content: Text(
-                state.error.userFriendlyMessage,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            )
+          ctx.showSnackbar(
+            type: SnackBarType.error,
+            message: state.error.userFriendlyMessage,
           );
         } else if (state is LoggedInLoginState) {
-          ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                backgroundColor: Colors.green,
-                content: Text(
-                  // TODO: move to locale
-                  'Logged in successfully!',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              )
+          ctx.showSnackbar(
+            message: ctx.l10n.loginSuccess,
           );
           context.replace('/journal');
         }

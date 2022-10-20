@@ -5,6 +5,7 @@ import 'package:flutter_clean_arch/app/cubit/state.dart';
 import 'package:flutter_clean_arch/core/di/di.dart';
 import 'package:flutter_clean_arch/core/router/router.dart';
 import 'package:flutter_clean_arch/l10n/l10n.dart';
+import 'package:flutter_clean_arch/ui/extensions/context_extensions.dart';
 import 'package:flutter_clean_arch/ui/theme/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -15,6 +16,28 @@ class App extends StatelessWidget {
 
   AppTheme get theme => AppTheme();
   final appCubit = locator.get<AppCubit>();
+
+  Widget btn(BuildContext ctx) {
+    return Positioned(
+      left: 16.0,
+      bottom: 16.0,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(96),
+        child: IntrinsicWidth(
+          child: MaterialButton(
+            onPressed: () => ctx.read<AppCubit>().toggleTheme(),
+            color: ctx.colors.primary,
+            child: Icon(
+              ctx.isDark
+                  ? Icons.star
+                  : Icons.sunny,
+              color: ctx.colors.onPrimary,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +61,15 @@ class App extends StatelessWidget {
               ],
               supportedLocales: CleanLocalizations.supportedLocales,
               routerConfig: appRouter,
+              builder: (ctx, child) {
+                return Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    child ?? Container(),
+                    btn(ctx),
+                  ],
+                );
+              },
             ),
           );
         },

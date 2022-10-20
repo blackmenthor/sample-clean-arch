@@ -15,5 +15,6 @@
     "movieListPage": "[es] Movie List Page",
     "noItemsAvailable": "[es] No items available",
     "initializingApp": "[es] Initializing App, please wait...",
-    "systemNotAvailable": "[es] We're sorry, our servers are not available at the moment"
+    "systemNotAvailable": "[es] We're sorry, our servers are not available at the moment",
+    "loginSuccess": "[es] Logged in successfully!"
 }
