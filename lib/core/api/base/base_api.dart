@@ -6,10 +6,10 @@ import 'package:flutter_clean_arch/core/api/base/api_calls.dart';
 import 'package:flutter_clean_arch/core/api/base/base_exception.dart';
 import 'package:flutter_clean_arch/core/api/base/base_request_info.dart';
 import 'package:flutter_clean_arch/core/api/models/base_paginated_response.dart';
-import 'package:flutter_clean_arch/core/api/models/paginated_date.dart';
 import 'package:flutter_clean_arch/core/api/models/response_object.dart';
 import 'package:flutter_clean_arch/core/di/di.dart';
 import 'package:flutter_clean_arch/core/extensions/response_extensions.dart';
+import 'package:flutter_clean_arch/core/shared_prefs/shared_prefs.dart';
 import 'package:flutter_clean_arch/utils/constants.dart';
 import 'package:flutter_clean_arch/utils/logger/logger.dart';
 
@@ -19,6 +19,7 @@ class BaseApi<T extends ResponseObject> {
     required this.serializer,
   });
 
+  final prefs = locator.get<Prefs>();
   final String baseEndpoint;
   final T Function(Map<String, dynamic>) serializer;
 
@@ -121,14 +122,9 @@ class BaseApi<T extends ResponseObject> {
         final jsonString = response.data?.toString();
         final json = jsonDecode(jsonString!) as Map<String, dynamic>;
 
-        final paginatedDate = json['dates'] == null
-            ? null
-            : PaginatedDate.fromJson(
-                json['dates'] as Map<String, dynamic>,
-              );
-        final page = json['page'] as int;
-        final totalPages = json['total_pages'] as int;
-        final totalResults = json['total_results'] as int;
+        final count = json['count'] as int;
+        final next = json['next'] as String?;
+        final previous = json['previous'] as String?;
 
         final results = <T>[];
         final resultsJson = json['results'] as List<dynamic>;
@@ -139,10 +135,9 @@ class BaseApi<T extends ResponseObject> {
         }
 
         return BasePaginatedResponse<T>(
-          paginatedDate: paginatedDate,
-          page: page,
-          totalPages: totalPages,
-          totalResults: totalResults,
+          count: count,
+          next: next,
+          previous: previous,
           results: results,
         );
       },
@@ -274,7 +269,10 @@ class BaseApi<T extends ResponseObject> {
       Constants.contentTypeHeaderKey: Constants.contentTypeHeaderValue,
     };
 
-    // fill in auth headers here if needed
+    if (prefs.isLoggedIn) {
+      headers[Constants.authHeaderKey] = '${Constants.authHeaderValuePrefix} '
+          '${prefs.getToken()}';
+    }
 
     return headers;
   }

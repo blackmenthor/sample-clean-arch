@@ -21,6 +21,16 @@ class JournalListCubit extends BasePaginatedCubit<Journal> {
     return prevQuery;
   }
 
+  int get currentPage {
+    int page = 1;
+    if (state is JournalListCubitLoadedState) {
+      final splitted = (state as JournalListCubitLoadedState).next?.split('=');
+      final pageStr = splitted?.last ?? '0';
+      page = int.parse(pageStr);
+    }
+    return page;
+  }
+
   void searchItem({
     required String query,
   }) {
@@ -59,10 +69,9 @@ class JournalListCubit extends BasePaginatedCubit<Journal> {
       emit(
         JournalListCubitLoadedState(
           data: resp.results,
-          page: resp.page,
-          paginatedDate: resp.paginatedDate,
-          totalPages: resp.totalPages,
-          totalResults: resp.totalResults,
+          count: resp.count,
+          next: resp.next,
+          previous: resp.previous,
           searchQuery: currentQuery,
           isLoadingMoreData: false,
         ),
@@ -105,10 +114,9 @@ class JournalListCubit extends BasePaginatedCubit<Journal> {
       final oldData = paginatedState.data ?? [];
       emit(
         paginatedState.copyWith(
-          page: newPage,
-          totalPages: resp.totalPages,
-          totalResults: resp.totalResults,
-          paginatedDate: resp.paginatedDate,
+          count: resp.count,
+          previous: resp.previous,
+          next: resp.next,
           data: [...oldData, ...resp.results],
           searchQuery: currentQuery,
           isLoadingMoreData: false,

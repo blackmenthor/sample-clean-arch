@@ -4,7 +4,9 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_clean_arch/core/api/base/base_exception.dart';
 import 'package:flutter_clean_arch/core/api/base/base_request_info.dart';
+import 'package:flutter_clean_arch/core/di/di.dart';
 import 'package:flutter_clean_arch/core/extensions/response_extensions.dart';
+import 'package:flutter_clean_arch/core/shared_prefs/shared_prefs.dart';
 import 'package:flutter_clean_arch/utils/constants.dart';
 import 'package:flutter_clean_arch/utils/logger/logger.dart';
 
@@ -25,6 +27,8 @@ abstract class BaseApiCall<T> {
     required this.serializer,
   });
 
+  final prefs = locator.get<Prefs>();
+
   final BaseApiCallType type;
   final Dio dio;
   final Connectivity connectivity;
@@ -36,6 +40,10 @@ abstract class BaseApiCall<T> {
     };
 
     // fill in auth headers here if needed
+    if (prefs.isLoggedIn) {
+      headers[Constants.authHeaderKey] = '${Constants.authHeaderValuePrefix} '
+          '${prefs.getToken()}';
+    }
 
     return headers;
   }

@@ -1,6 +1,3 @@
-
-
-import 'package:flutter_clean_arch/core/api/models/paginated_date.dart';
 import 'package:flutter_clean_arch/core/exceptions/app_exception.dart';
 
 abstract class BaseCubitState {}
@@ -44,40 +41,36 @@ class BaseCubitLoadedState<T> extends BaseCubitState {
 class BasePaginatedCubitLoadedState<T> extends BaseCubitState {
   BasePaginatedCubitLoadedState({
     required this.data,
-    this.paginatedDate,
-    this.page = 1,
-    this.totalPages = 1,
-    this.totalResults = 0,
+    this.count = 0,
+    this.next,
+    this.previous,
     this.error,
     this.isLoadingMoreData = false,
   });
 
   final List<T>? data;
-  final PaginatedDate? paginatedDate;
-  final int page;
-  final int totalPages;
-  final int totalResults;
+  final String? next;
+  final String? previous;
+  final int count;
   final dynamic error;
   final bool isLoadingMoreData;
 
   // if there's an error while loading more, we'll stop loading more
-  bool get hasMore => error == null && page < totalPages;
+  bool get hasMore => error == null && next != null;
 
   BasePaginatedCubitLoadedState<T> copyWith({
     List<T>? data,
-    PaginatedDate? paginatedDate,
-    int? page,
-    int? totalPages,
-    int? totalResults,
+    int? count,
+    String? next,
+    String? previous,
     dynamic error,
     bool? isLoadingMoreData,
   }) {
     return BasePaginatedCubitLoadedState<T>(
       data: data ?? this.data,
-      paginatedDate: paginatedDate ?? this.paginatedDate,
-      page: page ?? this.page,
-      totalPages: totalPages ?? this.totalPages,
-      totalResults: totalResults ?? this.totalResults,
+      count: count ?? this.count,
+      next: next ?? this.next,
+      previous: previous ?? this.previous,
       error: error ?? this.error,
       isLoadingMoreData: isLoadingMoreData ?? this.isLoadingMoreData,
     );

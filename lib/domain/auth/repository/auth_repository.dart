@@ -7,6 +7,8 @@ class AuthRepository {
   final cacheSource = locator.get<Prefs>();
   final remoteSource = AuthAPIRepository();
 
+  bool get hasToken => token != null;
+
   String? get token => cacheSource.getToken();
   String? get refreshToken => cacheSource.getRefreshToken();
   String? get username => cacheSource.getUsername();
@@ -19,6 +21,12 @@ class AuthRepository {
     return remoteSource.login(
         username: username,
         password: password,
+    );
+  }
+
+  Future<void> refresh() async {
+    return remoteSource.refreshToken(
+      refreshToken: refreshToken ?? '',
     );
   }
 

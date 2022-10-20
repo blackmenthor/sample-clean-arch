@@ -1,4 +1,3 @@
-import 'package:flutter_clean_arch/core/api/models/paginated_date.dart';
 import 'package:flutter_clean_arch/core/cubit/states.dart';
 import 'package:flutter_clean_arch/core/exceptions/app_exception.dart';
 import 'package:flutter_clean_arch/domain/journal/models/journal.dart';
@@ -41,18 +40,16 @@ class JournalListCubitLoadingState extends BaseCubitLoadingState {
 class JournalListCubitLoadedState extends BasePaginatedCubitLoadedState<Journal> {
   JournalListCubitLoadedState({
     required List<Journal>? data,
-    PaginatedDate? paginatedDate,
-    required int page,
-    required int totalPages,
-    required int totalResults,
+    required int count,
+    required String? next,
+    required String? previous,
     dynamic error,
     required bool isLoadingMoreData,
     this.searchQuery,
   }) : super(
-          paginatedDate: paginatedDate,
-          page: page,
-          totalPages: totalPages,
-          totalResults: totalResults,
+          count: count,
+          next: next,
+          previous: previous,
           data: data,
           error: error,
           isLoadingMoreData: isLoadingMoreData,
@@ -75,20 +72,18 @@ class JournalListCubitLoadedState extends BasePaginatedCubitLoadedState<Journal>
   @override
   JournalListCubitLoadedState copyWith({
     List<Journal>? data,
-    PaginatedDate? paginatedDate,
-    int? page,
-    int? totalPages,
-    int? totalResults,
+    int? count,
+    String? next,
+    String? previous,
     dynamic error,
     String? searchQuery,
     bool? isLoadingMoreData,
   }) {
     return JournalListCubitLoadedState(
       data: data ?? this.data,
-      paginatedDate: paginatedDate ?? this.paginatedDate,
-      page: page ?? this.page,
-      totalPages: totalPages ?? this.totalPages,
-      totalResults: totalResults ?? this.totalResults,
+      count: count ?? this.count,
+      next: next ?? this.next,
+      previous: previous ?? this.previous,
       error: error ?? this.error,
       searchQuery: searchQuery ?? this.searchQuery,
       isLoadingMoreData: isLoadingMoreData ?? this.isLoadingMoreData,

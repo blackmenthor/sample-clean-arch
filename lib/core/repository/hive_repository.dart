@@ -36,9 +36,9 @@ abstract class HiveRepository<T extends ResponseObject>
     final resp = _box.getAll();
     return Future.value(
       BasePaginatedResponse(
-        totalResults: resp?.length ?? 0,
-        totalPages: 1,
-        page: 1,
+        previous: null,
+        next: null,
+        count: resp?.length ?? 0,
         results: resp ?? [],
       ),
     );

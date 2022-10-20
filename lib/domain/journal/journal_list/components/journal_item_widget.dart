@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_arch/domain/journal/models/journal.dart';
+import 'package:go_router/go_router.dart';
 
 class JournalItemWidget extends StatelessWidget {
   const JournalItemWidget({
@@ -15,7 +16,7 @@ class JournalItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () async {
-        // TODO: TO SINGLE PAGE
+        context.go('/journal/${journal.id}');
       },
       leading: journal.thumbnail == null ? null : ClipRRect(
         borderRadius: BorderRadius.circular(8),

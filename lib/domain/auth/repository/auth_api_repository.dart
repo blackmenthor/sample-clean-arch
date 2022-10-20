@@ -1,12 +1,9 @@
-import 'package:flutter_clean_arch/core/api/api.dart';
 import 'package:flutter_clean_arch/core/di/di.dart';
 import 'package:flutter_clean_arch/domain/auth/api/user_api.dart';
 import 'package:flutter_clean_arch/domain/auth/models/user.dart';
 
 class AuthAPIRepository {
-  final api = locator.get<Api>();
-
-  AuthApi get authApi => api.auth;
+  final authApi = locator.get<AuthApi>();
 
   Future<User> login({
     required String username,
@@ -15,6 +12,14 @@ class AuthAPIRepository {
     return authApi.login(
       username: username,
       password: password,
+    );
+  }
+
+  Future<void> refreshToken({
+    required String refreshToken,
+  }) {
+    return authApi.refreshToken(
+      refreshToken: refreshToken,
     );
   }
 
