@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_arch/domain/auth/pages/login/login_page.dart';
+import 'package:flutter_clean_arch/domain/auth/pages/login/view/login_page.dart';
+import 'package:flutter_clean_arch/domain/auth/pages/register/register_page.dart';
+import 'package:flutter_clean_arch/domain/journal/journal_detail/view/journal_detail_page.dart';
 import 'package:flutter_clean_arch/domain/journal/journal_list/view/journal_list_page.dart';
 import 'package:flutter_clean_arch/kickoff/view/kickoff_page.dart';
 import 'package:go_router/go_router.dart';
@@ -20,7 +22,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/register',
       builder: (BuildContext context, GoRouterState state) {
-        return const LoginPage();
+        return const RegisterPage();
       },
     ),
     GoRoute(
@@ -28,17 +30,17 @@ final GoRouter appRouter = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return const JournalListPage();
       },
-      // routes: [
-      //   GoRoute(
-      //     path: ':id',
-      //     builder: (BuildContext context, GoRouterState state) {
-      //       final id = state.params['id'] ?? '';
-      //       return JournalDetailPage(
-      //         id: id,
-      //       );
-      //     },
-      //   ),
-      // ],
+      routes: [
+        GoRoute(
+          path: ':id',
+          builder: (BuildContext context, GoRouterState state) {
+            final id = state.params['id'] ?? '';
+            return JournalDetailPage(
+              id: id,
+            );
+          },
+        ),
+      ],
     ),
   ],
 );

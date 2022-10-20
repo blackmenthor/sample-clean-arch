@@ -5,6 +5,7 @@ import 'package:flutter_clean_arch/core/api/api.dart';
 import 'package:flutter_clean_arch/core/hive/hive_service.dart';
 import 'package:flutter_clean_arch/core/models/credentials.dart';
 import 'package:flutter_clean_arch/core/shared_prefs/shared_prefs.dart';
+import 'package:flutter_clean_arch/domain/auth/repository/auth_repository.dart';
 import 'package:flutter_clean_arch/domain/journal/repository/journal_repository.dart';
 import 'package:flutter_clean_arch/utils/constants.dart';
 import 'package:flutter_clean_arch/utils/logger/logger.dart';
@@ -39,7 +40,8 @@ class DependencyInjection {
       })
       ..registerSingleton<HiveService>(HiveService())
       ..registerSingleton<AppCubit>(AppCubit())
-      ..registerSingleton<JournalRepository>(JournalRepository());
+      ..registerSingleton<JournalRepository>(JournalRepository())
+      ..registerSingleton<AuthRepository>(AuthRepository());
   }
 
 }

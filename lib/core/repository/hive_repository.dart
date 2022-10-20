@@ -16,7 +16,7 @@ abstract class HiveRepository<T extends ResponseObject>
   @override
   Future<T> addNew({
     required T item,
-    required String id,
+    String? id,
   }) async {
     await _box.putItem(id: id, item: item);
     return item;

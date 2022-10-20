@@ -70,7 +70,12 @@ abstract class BaseApiCall<T> {
     await _checkForConnectivity();
 
     try {
-      final resp = await actualApiCall(path: path);
+      final resp = await actualApiCall(
+          path: path,
+          body: body,
+          queryParams: queryParams,
+          headers: headers,
+      );
       return resp;
     } on DioError catch (ex) {
       // change to extension function
@@ -187,6 +192,7 @@ class PostApiCall<T> extends BaseApiCall<T> {
       path: path,
       queryParams: queryParams,
       header: headers,
+      body: body,
     );
 
     logger.i(

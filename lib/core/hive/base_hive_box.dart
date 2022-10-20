@@ -36,9 +36,10 @@ class BaseHiveBox<T extends BaseModel> {
   }
 
   Future<void> putItem({
-    required String id,
+    required String? id,
     required T item,
   }) {
+    if (id == null) return Future.value();
     final box = getBox();
     return box.put(id, item);
   }

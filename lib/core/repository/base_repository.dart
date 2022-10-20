@@ -12,7 +12,7 @@ abstract class BaseRepository<T extends ResponseObject> {
 
   Future<T> addNew({
     required T item,
-    required String id,
+    String? id,
   });
 
   Future<T> updateItem({
