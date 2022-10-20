@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_arch/api.dart';
+import 'package:flutter_clean_arch/dialogs.dart';
 import 'package:flutter_clean_arch/models.dart';
 
 class JournalSinglePage extends StatefulWidget {
@@ -97,63 +98,59 @@ class _JournalSinglePageState extends State<JournalSinglePage> {
       );
     }
 
-    return Padding(
+    return ListView(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network(
-              journal!.thumbnail,
-              width: 348,
-            ),
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Image.network(
+            journal!.thumbnail,
+            width: 348,
           ),
-          const SizedBox(height: 16,),
-          const Text(
-            'Title:',
-            style: TextStyle(
-              fontSize: 18,
-            ),
+        ),
+        const SizedBox(height: 16,),
+        const Text(
+          'Title:',
+          style: TextStyle(
+            fontSize: 18,
           ),
-          const SizedBox(height: 8,),
-          Text(
-            journal!.title,
-            style: const TextStyle(
-              fontSize: 16,
-            ),
+        ),
+        const SizedBox(height: 8,),
+        Text(
+          journal!.title,
+          style: const TextStyle(
+            fontSize: 16,
           ),
-          const SizedBox(height: 16,),
-          const Text(
-            'Body:',
-            style: TextStyle(
-              fontSize: 18,
-            ),
+        ),
+        const SizedBox(height: 16,),
+        const Text(
+          'Body:',
+          style: TextStyle(
+            fontSize: 18,
           ),
-          const SizedBox(height: 8,),
-          Text(
-            journal!.body,
-            style: const TextStyle(
-              fontSize: 16,
-            ),
+        ),
+        const SizedBox(height: 8,),
+        Text(
+          journal!.body,
+          style: const TextStyle(
+            fontSize: 16,
           ),
-          const SizedBox(height: 16,),
-          const Text(
-            'Date:',
-            style: TextStyle(
-              fontSize: 18,
-            ),
+        ),
+        const SizedBox(height: 16,),
+        const Text(
+          'Date:',
+          style: TextStyle(
+            fontSize: 18,
           ),
-          const SizedBox(height: 8,),
-          Text(
-            journal!.date,
-            style: const TextStyle(
-              fontSize: 16,
-            ),
-          )
-        ],
-      ),
+        ),
+        const SizedBox(height: 8,),
+        Text(
+          journal!.date,
+          style: const TextStyle(
+            fontSize: 16,
+          ),
+        )
+      ],
     );
   }
 
@@ -164,6 +161,24 @@ class _JournalSinglePageState extends State<JournalSinglePage> {
         title: const Text(
           'Journal Detail Page',
         ),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              final resp = await showDeleteJournalDialog(
+                  context: context,
+                  id: widget.id,
+              );
+              if (resp ?? false) {
+                Navigator.pop(context, true);
+              }
+            },
+            icon: const Icon(
+              Icons.delete,
+              size: 18.0,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
       body: body(context),
     );

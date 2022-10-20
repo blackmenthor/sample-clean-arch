@@ -198,6 +198,29 @@ class Api {
     }
   }
 
+  Future<void> deleteJournal({
+    required String id,
+  }) async {
+    try {
+      final url = '${Constants.baseUrl}journal/journal/$id/';
+      final token = await getToken();
+      final resp = await dio.delete<String>(
+        url,
+        options: Options(
+          headers: <String, dynamic>{
+            'Authorization': 'Bearer $token',
+          },
+        ),
+      );
+      return;
+    } on DioError catch (ex) {
+      print(ex.response?.data.toString());
+      rethrow;
+    } catch (ex) {
+      rethrow;
+    }
+  }
+
   Future<Journal> createJournal({
     required String title,
     required String body,

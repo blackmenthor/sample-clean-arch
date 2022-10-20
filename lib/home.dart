@@ -114,12 +114,15 @@ class _HomePageState extends State<HomePage> {
       itemBuilder: (ctx, idx) {
         final journal = journals![idx];
         return ListTile(
-          onTap: () {
-            Navigator.push(
+          onTap: () async {
+            final resp = await Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (ctx) => JournalSinglePage(id: journal.id)),
             );
+            if (resp ?? false) {
+              fetchData();
+            }
           },
           leading: ClipRRect(
             borderRadius: BorderRadius.circular(8),
