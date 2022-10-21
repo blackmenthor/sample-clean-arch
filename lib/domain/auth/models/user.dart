@@ -18,6 +18,7 @@ class User extends ResponseObject with _$User {
     @HiveField(3) required String? lastName,
     @HiveField(4) required String? access,
     @HiveField(5) required String? refresh,
+    @HiveField(6) required String? token,
   }) = _User;
 
   factory User.fromJson(Map<String, Object?> json)

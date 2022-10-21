@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_arch/l10n/l10n.dart';
+import 'package:flutter_gen/gen_l10n/clean_localizations_en.dart';
 
 enum SnackBarType {
   regular,
@@ -13,7 +14,13 @@ extension BuildContextExtensions on BuildContext {
   TextTheme get textTheme => theme.textTheme;
   ColorScheme get colors => theme.colorScheme;
 
-  CleanLocalizations get l10n => CleanLocalizations.of(this);
+  CleanLocalizations get l10n {
+    try {
+      return CleanLocalizations.of(this);
+    } catch (ex) {
+      return CleanLocalizationsEn();
+    }
+  }
 
   void showSnackbar({
     SnackBarType type = SnackBarType.regular,

@@ -14,6 +14,11 @@ class AuthRepository {
   String? get username => cacheSource.getUsername();
   String? get firstName => cacheSource.getFirstName();
 
+  Future<void> logout() async {
+    await cacheSource.logout();
+    return;
+  }
+
   Future<User> login({
     required String username,
     required String password,

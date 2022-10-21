@@ -2,12 +2,14 @@ import 'package:flutter_clean_arch/core/api/models/base_paginated_response.dart'
 import 'package:flutter_clean_arch/core/cubit/base_paginated_cubit.dart';
 import 'package:flutter_clean_arch/core/di/di.dart';
 import 'package:flutter_clean_arch/core/exceptions/app_exception.dart';
+import 'package:flutter_clean_arch/domain/auth/repository/auth_repository.dart';
 import 'package:flutter_clean_arch/domain/journal/journal_list/cubit/journal_list_cubit_state.dart';
 import 'package:flutter_clean_arch/domain/journal/models/journal.dart';
 import 'package:flutter_clean_arch/domain/journal/repository/journal_repository.dart';
 
 class JournalListCubit extends BasePaginatedCubit<Journal> {
   final journalRepository = locator.get<JournalRepository>();
+  final authRepository = locator.get<AuthRepository>();
 
   String? get currentQuery {
     String? prevQuery;
@@ -29,6 +31,10 @@ class JournalListCubit extends BasePaginatedCubit<Journal> {
       page = int.parse(pageStr);
     }
     return page;
+  }
+
+  Future<void> logout() async {
+    return authRepository.logout();
   }
 
   void searchItem({

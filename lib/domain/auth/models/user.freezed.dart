@@ -32,6 +32,8 @@ mixin _$User {
   String? get access => throw _privateConstructorUsedError;
   @HiveField(5)
   String? get refresh => throw _privateConstructorUsedError;
+  @HiveField(6)
+  String? get token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +51,8 @@ abstract class $UserCopyWith<$Res> {
       @HiveField(2) String? firstName,
       @HiveField(3) String? lastName,
       @HiveField(4) String? access,
-      @HiveField(5) String? refresh});
+      @HiveField(5) String? refresh,
+      @HiveField(6) String? token});
 }
 
 /// @nodoc
@@ -71,6 +74,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? lastName = freezed,
     Object? access = freezed,
     Object? refresh = freezed,
+    Object? token = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -97,6 +101,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.refresh
           : refresh // ignore: cast_nullable_to_non_nullable
               as String?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -113,7 +121,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       @HiveField(2) String? firstName,
       @HiveField(3) String? lastName,
       @HiveField(4) String? access,
-      @HiveField(5) String? refresh});
+      @HiveField(5) String? refresh,
+      @HiveField(6) String? token});
 }
 
 /// @nodoc
@@ -131,6 +140,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? lastName = freezed,
     Object? access = freezed,
     Object? refresh = freezed,
+    Object? token = freezed,
   }) {
     return _then(_$_User(
       id: null == id
@@ -157,6 +167,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.refresh
           : refresh // ignore: cast_nullable_to_non_nullable
               as String?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -172,7 +186,8 @@ class _$_User implements _User {
       @HiveField(2) required this.firstName,
       @HiveField(3) required this.lastName,
       @HiveField(4) required this.access,
-      @HiveField(5) required this.refresh});
+      @HiveField(5) required this.refresh,
+      @HiveField(6) required this.token});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -194,10 +209,13 @@ class _$_User implements _User {
   @override
   @HiveField(5)
   final String? refresh;
+  @override
+  @HiveField(6)
+  final String? token;
 
   @override
   String toString() {
-    return 'User(id: $id, username: $username, firstName: $firstName, lastName: $lastName, access: $access, refresh: $refresh)';
+    return 'User(id: $id, username: $username, firstName: $firstName, lastName: $lastName, access: $access, refresh: $refresh, token: $token)';
   }
 
   @override
@@ -213,13 +231,14 @@ class _$_User implements _User {
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
             (identical(other.access, access) || other.access == access) &&
-            (identical(other.refresh, refresh) || other.refresh == refresh));
+            (identical(other.refresh, refresh) || other.refresh == refresh) &&
+            (identical(other.token, token) || other.token == token));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, username, firstName, lastName, access, refresh);
+      runtimeType, id, username, firstName, lastName, access, refresh, token);
 
   @JsonKey(ignore: true)
   @override
@@ -242,7 +261,8 @@ abstract class _User implements User {
       @HiveField(2) required final String? firstName,
       @HiveField(3) required final String? lastName,
       @HiveField(4) required final String? access,
-      @HiveField(5) required final String? refresh}) = _$_User;
+      @HiveField(5) required final String? refresh,
+      @HiveField(6) required final String? token}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -264,6 +284,9 @@ abstract class _User implements User {
   @override
   @HiveField(5)
   String? get refresh;
+  @override
+  @HiveField(6)
+  String? get token;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

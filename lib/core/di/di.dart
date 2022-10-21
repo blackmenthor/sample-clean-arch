@@ -1,9 +1,11 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_clean_arch/app/cubit/app_cubit.dart';
 import 'package:flutter_clean_arch/core/api/api.dart';
 import 'package:flutter_clean_arch/core/hive/hive_service.dart';
 import 'package:flutter_clean_arch/core/models/credentials.dart';
+import 'package:flutter_clean_arch/core/router/router.dart';
 import 'package:flutter_clean_arch/core/shared_prefs/shared_prefs.dart';
 import 'package:flutter_clean_arch/domain/auth/api/user_api.dart';
 import 'package:flutter_clean_arch/domain/auth/repository/auth_repository.dart';
@@ -22,6 +24,8 @@ class DependencyInjection {
     locator
       ..registerSingleton<AppLogger>(AppLogger())
       ..registerSingleton<Connectivity>(Connectivity())
+      ..registerSingleton<GlobalKey<NavigatorState>>(GlobalKey<NavigatorState>())
+      ..registerSingleton<AppNavigator>(AppNavigator())
       ..registerSingleton<Credentials>(credentials[env]!)
       ..registerSingleton<Prefs>(Prefs())
       ..registerLazySingleton(() {
@@ -43,9 +47,9 @@ class DependencyInjection {
         );
       })
       ..registerSingleton<HiveService>(HiveService())
-      ..registerSingleton<AppCubit>(AppCubit())
       ..registerSingleton<JournalRepository>(JournalRepository())
-      ..registerSingleton<AuthRepository>(AuthRepository());
+      ..registerSingleton<AuthRepository>(AuthRepository())
+      ..registerSingleton<AppCubit>(AppCubit());
   }
 
 }

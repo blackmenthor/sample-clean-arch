@@ -45,7 +45,7 @@ class AuthApi extends BaseApi<User> {
         'password': password,
       },
     );
-    sharedPreferences.setToken(token: resp.access!);
+    sharedPreferences.setToken(token: resp.token!);
     sharedPreferences.setRefreshToken(refreshToken: resp.refresh!);
     sharedPreferences.setUsername(username: resp.username);
     sharedPreferences.setFirstName(firstName: resp.firstName ?? '');

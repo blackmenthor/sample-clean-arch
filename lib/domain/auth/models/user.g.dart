@@ -23,13 +23,14 @@ class UserDataAdapter extends TypeAdapter<_$_User> {
       lastName: fields[3] as String?,
       access: fields[4] as String?,
       refresh: fields[5] as String?,
+      token: fields[6] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_User obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class UserDataAdapter extends TypeAdapter<_$_User> {
       ..writeByte(4)
       ..write(obj.access)
       ..writeByte(5)
-      ..write(obj.refresh);
+      ..write(obj.refresh)
+      ..writeByte(6)
+      ..write(obj.token);
   }
 
   @override
@@ -66,6 +69,7 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       lastName: json['last_name'] as String?,
       access: json['access'] as String?,
       refresh: json['refresh'] as String?,
+      token: json['token'] as String?,
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -75,4 +79,5 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'last_name': instance.lastName,
       'access': instance.access,
       'refresh': instance.refresh,
+      'token': instance.token,
     };

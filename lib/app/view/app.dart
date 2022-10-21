@@ -20,7 +20,7 @@ class App extends StatelessWidget {
   Widget btn(BuildContext ctx) {
     return Positioned(
       left: 16.0,
-      bottom: 16.0,
+      bottom: 48.0,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(96),
         child: IntrinsicWidth(

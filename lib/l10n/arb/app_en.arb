@@ -16,5 +16,10 @@
     "noItemsAvailable": "No items available",
     "initializingApp": "Initializing App, please wait...",
     "systemNotAvailable": "We're sorry, our servers are not available at the moment",
-    "loginSuccess": "Logged in successfully!"
+    "loginSuccess": "Logged in successfully!",
+    "registerSuccess": "Registered successfully!",
+    "pleaseWait": "Please wait...",
+    "yes": "Yes",
+    "no": "No",
+    "logoutPrompt": "Are you sure you want to logout?"
 }

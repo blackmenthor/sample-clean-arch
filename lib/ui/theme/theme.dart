@@ -18,7 +18,7 @@ class AppTheme {
       brightness: Brightness.dark,
     ),
     iconTheme: const IconThemeData(
-      color: Colors.black,
+      color: Colors.white,
     ),
     textTheme: const TextTheme(
       headline1: TextStyle(
@@ -29,7 +29,7 @@ class AppTheme {
 
   ThemeData get lightTheme => ThemeData(
     colorScheme: ColorScheme(
-      primary: AppColors.canary,
+      primary: AppColors.orangePeel,
       onPrimary: AppColors.black,
       secondary: AppColors.teaGreen,
       onSecondary: AppColors.teaGreen.withOpacity(0.5),

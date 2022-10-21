@@ -9,38 +9,42 @@ import 'package:flutter_clean_arch/ui/components/base_loadable_scaffold.dart';
 import 'package:flutter_clean_arch/ui/components/base_search_text_field.dart';
 import 'package:flutter_clean_arch/ui/components/default_shimmer.dart';
 import 'package:flutter_clean_arch/ui/components/infinity_list_view.dart';
+import 'package:flutter_clean_arch/ui/dialogs/loading_dialog.dart';
+import 'package:flutter_clean_arch/ui/dialogs/prompt_dialog.dart';
+import 'package:flutter_clean_arch/ui/extensions/context_extensions.dart';
+import 'package:go_router/go_router.dart';
 
 class JournalListPage extends StatelessWidget {
-  const JournalListPage({
+  JournalListPage({
     Key? key,
   }) : super(key: key);
+
+  final cubit = JournalListCubit();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => JournalListCubit(),
+      create: (_) => cubit,
       child: BaseLoadableScaffold<BasePaginatedResponse<Journal>, JournalListCubit>(
         title: 'Journal List Page',
         appbarActions: [
-          // TODO:
-          // IconButton(
-          //     onPressed: () async {
-          //       // TODO: to add journal page
-          //     },
-          //     icon: const Icon(
-          //       Icons.add,
-          //       size: 18.0,
-          //     ),
-          // ),
-          // IconButton(
-          //     onPressed: () {
-          //       // TODO: to logout dialog
-          //     },
-          //     icon: const Icon(
-          //       Icons.logout,
-          //       size: 18.0,
-          //     ),
-          // ),
+          IconButton(
+              onPressed: () async {
+                final resp = await showPromptDialog(
+                    context: context,
+                    title: context.l10n.logoutPrompt,
+                );
+                if (resp) {
+                  showLoadingDialog(context: context);
+                  await cubit.logout();
+                  context.replace('/login');
+                }
+              },
+              icon: const Icon(
+                Icons.logout,
+                size: 18.0,
+              ),
+          ),
         ],
         customLoadingWidget: const DefaultAppShimmer(),
         onRetry: (ctx) => ctx.read<JournalListCubit>().kickOff(),
