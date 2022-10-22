@@ -23,7 +23,6 @@ class BaseApi<T extends ResponseObject> {
   final String baseEndpoint;
   final T Function(Map<String, dynamic>) serializer;
 
-  // move to DI.
   final Dio dio = locator.get<Dio>();
   final Connectivity connectivity = locator.get<Connectivity>();
 
