@@ -4,12 +4,13 @@ import 'package:flutter_clean_arch/domain/journal/models/journal.dart';
 
 class JournalListCubitErrorState extends BaseCubitErrorState {
   JournalListCubitErrorState({
-    required AppException error,
+    required super.error,
     this.searchQuery,
-  }) : super(error: error);
+  });
 
   final String? searchQuery;
 
+  @override
   JournalListCubitErrorState copyWith({
     String? searchQuery,
     AppException? error,
@@ -39,21 +40,14 @@ class JournalListCubitLoadingState extends BaseCubitLoadingState {
 
 class JournalListCubitLoadedState extends BasePaginatedCubitLoadedState<Journal> {
   JournalListCubitLoadedState({
-    required List<Journal>? data,
-    required int count,
-    required String? next,
-    required String? previous,
-    dynamic error,
-    required bool isLoadingMoreData,
+    super.data,
+    super.count,
+    super.next,
+    super.previous,
+    super.error,
+    super.isLoadingMoreData,
     this.searchQuery,
-  }) : super(
-          count: count,
-          next: next,
-          previous: previous,
-          data: data,
-          error: error,
-          isLoadingMoreData: isLoadingMoreData,
-        );
+  });
 
   final String? searchQuery;
 
