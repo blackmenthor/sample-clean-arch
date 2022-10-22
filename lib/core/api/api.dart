@@ -4,7 +4,6 @@ import 'package:flutter_clean_arch/domain/journal/api/journal_api.dart';
 export 'base/base_api.dart';
 export 'base/base_exception.dart';
 export 'base/base_request_info.dart';
-export 'models/request_object.dart';
 export 'models/response_object.dart';
 
 class Api {
