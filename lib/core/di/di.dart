@@ -13,6 +13,7 @@ import 'package:flutter_clean_arch/domain/journal/repository/journal_repository.
 import 'package:flutter_clean_arch/utils/constants.dart';
 import 'package:flutter_clean_arch/utils/logger/logger.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final locator = GetIt.instance;
 
@@ -27,6 +28,7 @@ class DependencyInjection {
       ..registerSingleton<GlobalKey<NavigatorState>>(GlobalKey<NavigatorState>())
       ..registerSingleton<AppNavigator>(AppNavigator())
       ..registerSingleton<Credentials>(credentials[env]!)
+      ..registerSingletonAsync<SharedPreferences>(() => SharedPreferences.getInstance())
       ..registerSingleton<PrefsService>(PrefsService())
       ..registerLazySingleton(() {
         final baseEndpoint = credentials[env]!.baseEndpoint;
