@@ -27,7 +27,7 @@ class DependencyInjection {
       ..registerSingleton<GlobalKey<NavigatorState>>(GlobalKey<NavigatorState>())
       ..registerSingleton<AppNavigator>(AppNavigator())
       ..registerSingleton<Credentials>(credentials[env]!)
-      ..registerSingleton<Prefs>(Prefs())
+      ..registerSingleton<PrefsService>(PrefsService())
       ..registerLazySingleton(() {
         final baseEndpoint = credentials[env]!.baseEndpoint;
         final dioOptions = BaseOptions(

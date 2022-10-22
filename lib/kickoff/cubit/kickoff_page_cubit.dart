@@ -7,7 +7,7 @@ import 'package:flutter_clean_arch/core/shared_prefs/shared_prefs.dart';
 class KickOffPageCubit extends BaseLoadableCubit<bool> {
   final appCubit = locator<AppCubit>();
   final hiveService = locator<HiveService>();
-  final prefs = locator<Prefs>();
+  final prefs = locator<PrefsService>();
 
   @override
   Future<bool> loadData() async {

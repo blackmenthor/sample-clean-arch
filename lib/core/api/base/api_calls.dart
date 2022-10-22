@@ -27,7 +27,7 @@ abstract class BaseApiCall<T> {
     required this.serializer,
   });
 
-  final prefs = locator.get<Prefs>();
+  final prefs = locator.get<PrefsService>();
 
   final BaseApiCallType type;
   final Dio dio;

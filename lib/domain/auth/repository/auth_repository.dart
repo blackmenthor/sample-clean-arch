@@ -4,7 +4,7 @@ import 'package:flutter_clean_arch/domain/auth/models/user.dart';
 import 'package:flutter_clean_arch/domain/auth/repository/auth_api_repository.dart';
 
 class AuthRepository {
-  final cacheSource = locator.get<Prefs>();
+  final cacheSource = locator.get<PrefsService>();
   final remoteSource = AuthAPIRepository();
 
   bool get hasToken => token != null;

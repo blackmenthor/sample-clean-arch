@@ -19,7 +19,7 @@ class BaseApi<T extends ResponseObject> {
     required this.serializer,
   });
 
-  final prefs = locator.get<Prefs>();
+  final prefs = locator.get<PrefsService>();
   final String baseEndpoint;
   final T Function(Map<String, dynamic>) serializer;
 

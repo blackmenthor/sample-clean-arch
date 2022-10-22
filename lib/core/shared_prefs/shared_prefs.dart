@@ -1,7 +1,7 @@
 import 'package:flutter_clean_arch/core/di/di.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final prefs = locator.get<Prefs>();
+final prefs = locator.get<PrefsService>();
 
 bool isLoggedIn() {
   return prefs.getToken() != null;
@@ -14,9 +14,9 @@ enum PrefsKeys {
   firstName,
 }
 
-class Prefs {
+class PrefsService {
 
-  Prefs() {
+  PrefsService() {
     init();
   }
 
