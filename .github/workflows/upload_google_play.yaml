@@ -68,7 +68,7 @@ jobs:
           architecture: x64
 
       - run: flutter pub get
-      - run: flutter test
+      - run: flutter test --no-sound-null-safety --update-goldens
       - run: flutter build apk --release --split-per-abi
       - run: flutter build appbundle
       - name: Upload app bundle
