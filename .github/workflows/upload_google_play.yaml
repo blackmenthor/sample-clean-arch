@@ -66,5 +66,4 @@ jobs:
           releaseFile: app-release.aab
           track: internal
           # because app is still in Draft mode, these below line is needed
-          userFraction: 0.99
           status: draft
