@@ -27,6 +27,7 @@ class PrefsService {
   bool get isLoggedIn => getToken() != null;
 
   Future<void> init() async {
+    if (sharedPreferences != null) return;
     sharedPreferences = await locator.getAsync<SharedPreferences>();
   }
 

@@ -33,7 +33,7 @@ mixin _$Journal {
   @HiveField(5)
   bool get isFavorite => throw _privateConstructorUsedError;
   @HiveField(6)
-  DateTime get date => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +52,7 @@ abstract class $JournalCopyWith<$Res> {
       @HiveField(3) String? thumbnail,
       @HiveField(4) bool deleted,
       @HiveField(5) bool isFavorite,
-      @HiveField(6) DateTime date});
+      @HiveField(6) DateTime? date});
 }
 
 /// @nodoc
@@ -74,7 +74,7 @@ class _$JournalCopyWithImpl<$Res, $Val extends Journal>
     Object? thumbnail = freezed,
     Object? deleted = null,
     Object? isFavorite = null,
-    Object? date = null,
+    Object? date = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -101,10 +101,10 @@ class _$JournalCopyWithImpl<$Res, $Val extends Journal>
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
-      date: null == date
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -123,7 +123,7 @@ abstract class _$$_JournalCopyWith<$Res> implements $JournalCopyWith<$Res> {
       @HiveField(3) String? thumbnail,
       @HiveField(4) bool deleted,
       @HiveField(5) bool isFavorite,
-      @HiveField(6) DateTime date});
+      @HiveField(6) DateTime? date});
 }
 
 /// @nodoc
@@ -142,7 +142,7 @@ class __$$_JournalCopyWithImpl<$Res>
     Object? thumbnail = freezed,
     Object? deleted = null,
     Object? isFavorite = null,
-    Object? date = null,
+    Object? date = freezed,
   }) {
     return _then(_$_Journal(
       id: null == id
@@ -169,10 +169,10 @@ class __$$_JournalCopyWithImpl<$Res>
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
-      date: null == date
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -190,7 +190,7 @@ class _$_Journal implements _Journal {
       @HiveField(3) required this.thumbnail,
       @HiveField(4) required this.deleted,
       @HiveField(5) required this.isFavorite,
-      @HiveField(6) required this.date});
+      @HiveField(6) this.date});
 
   factory _$_Journal.fromJson(Map<String, dynamic> json) =>
       _$$_JournalFromJson(json);
@@ -215,7 +215,7 @@ class _$_Journal implements _Journal {
   final bool isFavorite;
   @override
   @HiveField(6)
-  final DateTime date;
+  final DateTime? date;
 
   @override
   String toString() {
@@ -265,7 +265,7 @@ abstract class _Journal implements Journal {
       @HiveField(3) required final String? thumbnail,
       @HiveField(4) required final bool deleted,
       @HiveField(5) required final bool isFavorite,
-      @HiveField(6) required final DateTime date}) = _$_Journal;
+      @HiveField(6) final DateTime? date}) = _$_Journal;
 
   factory _Journal.fromJson(Map<String, dynamic> json) = _$_Journal.fromJson;
 
@@ -289,7 +289,7 @@ abstract class _Journal implements Journal {
   bool get isFavorite;
   @override
   @HiveField(6)
-  DateTime get date;
+  DateTime? get date;
   @override
   @JsonKey(ignore: true)
   _$$_JournalCopyWith<_$_Journal> get copyWith =>

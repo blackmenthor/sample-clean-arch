@@ -21,5 +21,5 @@ CleanLocalizations getLocalizations() {
 
   if (!localeSupported) return CleanLocalizationsEn();
 
-  return lookupCleanLocalizations(local!);
+  return lookupCleanLocalizations(local);
 }

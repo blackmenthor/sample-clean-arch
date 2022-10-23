@@ -1,5 +1,3 @@
-import 'package:flutter_clean_arch/app/cubit/app_cubit.dart';
-import 'package:flutter_clean_arch/core/di/di.dart';
 import 'package:flutter_clean_arch/core/exceptions/app_exception.dart';
 import 'package:flutter_clean_arch/l10n/l10n.dart';
 
@@ -16,8 +14,6 @@ class ApiException extends AppException {
 
   @override
   dynamic get originalError => error;
-
-  final locale = locator.get<AppCubit>().state.locale;
 
   @override
   String get userFriendlyMessage {

@@ -23,7 +23,7 @@ class JournalDataAdapter extends TypeAdapter<_$_Journal> {
       thumbnail: fields[3] as String?,
       deleted: fields[4] as bool,
       isFavorite: fields[5] as bool,
-      date: fields[6] as DateTime,
+      date: fields[6] as DateTime?,
     );
   }
 
@@ -69,7 +69,8 @@ _$_Journal _$$_JournalFromJson(Map<String, dynamic> json) => _$_Journal(
       thumbnail: json['thumbnail'] as String?,
       deleted: json['deleted'] as bool,
       isFavorite: json['is_favorite'] as bool,
-      date: const CustomDateTimeConverter().fromJson(json['date'] as String),
+      date: _$JsonConverterFromJson<String, DateTime>(
+          json['date'], const CustomDateTimeConverter().fromJson),
     );
 
 Map<String, dynamic> _$$_JournalToJson(_$_Journal instance) =>
@@ -80,5 +81,18 @@ Map<String, dynamic> _$$_JournalToJson(_$_Journal instance) =>
       'thumbnail': instance.thumbnail,
       'deleted': instance.deleted,
       'is_favorite': instance.isFavorite,
-      'date': const CustomDateTimeConverter().toJson(instance.date),
+      'date': _$JsonConverterToJson<String, DateTime>(
+          instance.date, const CustomDateTimeConverter().toJson),
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);

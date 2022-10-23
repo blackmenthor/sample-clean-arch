@@ -19,7 +19,9 @@ class BaseApiRequestInfo {
   String toString() {
     var ret = '';
     ret += '${type.name.toUpperCase()}: $path\n';
-    ret += 'Query: $queryParams\n';
+    if (queryParams != null) {
+      ret += 'Query: $queryParams\n';
+    }
     if (header != null) {
       ret += 'Headers $header\n';
     }

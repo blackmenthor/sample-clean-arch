@@ -20,7 +20,7 @@ class Journal extends ResponseObject with _$Journal {
     @HiveField(3) required String? thumbnail,
     @HiveField(4) required bool deleted,
     @HiveField(5) required bool isFavorite,
-    @HiveField(6) required DateTime date,
+    @HiveField(6) DateTime? date,
   }) = _Journal;
 
   factory Journal.fromJson(Map<String, Object?> json)
