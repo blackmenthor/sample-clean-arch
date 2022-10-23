@@ -22,8 +22,6 @@ jobs:
         run: sed -i 's/#{KEYSTORE_KEY_PASS}#/${{ secrets.KEYSTORE_KEY_PASS }}/g' android/key.properties
       - name: Update KeyStore alias in gradle properties
         run: sed -i 's/#{KEYSTORE_KEY_ALIAS}#/${{ secrets.KEYSTORE_KEY_ALIAS }}/g' android/key.properties
-      - name: Update KeyStore file in gradle properties
-        run: sed -i 's/#{KEYSTORE_KEY_FILE}#/${{ secrets.KEYSTORE_KEY_FILE }}/g' android/key.properties
 
       - uses: actions/setup-java@v1
         with:
