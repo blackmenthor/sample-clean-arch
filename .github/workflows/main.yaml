@@ -12,7 +12,6 @@ on:
 
 jobs:
   build:
-    # This job will run on macos virtual machine
     runs-on: ubuntu-latest
     steps:
 
