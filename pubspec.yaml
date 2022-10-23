@@ -36,6 +36,7 @@ dependencies:
   cached_network_image: ^3.2.2
   shimmer: ^2.0.0
   fancy_shimmer_image: ^2.0.2
+  cupertino_icons: ^1.0.2
 
   # localization
   intl: ^0.17.0
