@@ -1,4 +1,4 @@
-name: rock_test
+name: clean_arch_test
 
 on:
   push:
