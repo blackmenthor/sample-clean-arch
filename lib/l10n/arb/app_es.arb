@@ -1,0 +1,25 @@
+{
+    "@@locale": "es",
+    "counterAppBarTitle": "Contador",
+    "@counterAppBarTitle": {
+        "description": "Texto mostrado en la AppBar de la página del contador"
+    },
+    "responseNotFound": "[es] Cannot found the resources you requested",
+    "responseBadRequest": "[es] There are some problems with your request",
+    "defaultErrorMessage": "[es] There are problems fetching your request",
+    "noInternetErrorMessage": "[es] You're not connected to internet",
+    "averageRating": "[es] Avg Rating",
+    "voteCount": "[es] Votes",
+    "movieDetail": "[es] Movie Detail",
+    "overview": "[es] Overview",
+    "movieListPage": "[es] Movie List Page",
+    "noItemsAvailable": "[es] No items available",
+    "initializingApp": "[es] Initializing App, please wait...",
+    "systemNotAvailable": "[es] We're sorry, our servers are not available at the moment",
+    "loginSuccess": "[es] Logged in successfully!",
+    "registerSuccess": "[es] Registered successfully!",
+    "pleaseWait": "[es] Please wait...",
+    "yes": "[es] Yes",
+    "no": "[es] No",
+    "logoutPrompt": "[es] Are you sure you want to logout?"
+}

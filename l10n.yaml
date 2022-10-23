@@ -1,0 +1,6 @@
+arb-dir: lib/l10n/arb
+template-arb-file: app_en.arb
+output-localization-file: clean_localizations.dart
+output-class: CleanLocalizations
+preferred-supported-locales: "en"
+nullable-getter: false
