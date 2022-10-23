@@ -65,3 +65,4 @@ jobs:
           packageName: com.anggach.flutter_clean_arch
           releaseFile: app-release.aab
           track: internal
+          status: draft
