@@ -49,7 +49,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.flutter_clean_arch"
+        applicationId "com.anggach.flutter_clean_arch"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
