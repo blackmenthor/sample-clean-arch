@@ -40,10 +40,6 @@ jobs:
 
       - run: flutter pub get
       - run: flutter test --no-sound-null-safety --update-goldens
-      - run:
-          |
-          cat android/key.properties
-          cat android/local.properties
       - run: flutter build apk --release --split-per-abi -t lib/main_production.dart
       - run: flutter build appbundle -t lib/main_production.dart
       - name: Upload app bundle
