@@ -85,8 +85,8 @@ jobs:
       - uses: actions/checkout@v1
       - name: Get appbundle from artifacts
         uses: actions/download-artifact@v2
-          with:
-            name: appbundle
+        with:
+          name: appbundle
       - name: Release app to internal track
         uses: r0adkll/upload-google-play@v1
         with:
