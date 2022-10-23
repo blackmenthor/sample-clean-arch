@@ -16,6 +16,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Update version in YAML
         run: sed -i 's/99.99.99+99/${{ github.ref_name }}+${{ github.run_number }}/g' pubspec.yaml
+      - name: Update version in local.properties
+        run:
+          |
+          sed -i 's/#{APP_VERSION_NAME}#/${{ github.ref_name }}/g' android/key.properties
+          sed -i 's/#{APP_VERSION_CODE}#/${{ github.run_number }}/g' android/key.properties
       - name: Update KeyStore password in gradle properties
         run: sed -i 's/#{KEYSTORE_PASS}#/${{ secrets.KEYSTORE_PASS }}/g' android/key.properties
       - name: Update KeyStore key password in gradle properties
