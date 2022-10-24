@@ -61,7 +61,7 @@ jobs:
           |
           cat .github/workflows/upload_google_play.yaml
       - name: Release app to internal track
-        uses: r0adkll/upload-google-play@v1.0.15
+        uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
           packageName: com.anggach.flutter_clean_arch
