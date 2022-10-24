@@ -40,7 +40,6 @@ jobs:
 
       - run: flutter pub get
       - run: flutter test --no-sound-null-safety --update-goldens
-#      - run: flutter build apk --release --split-per-abi -t lib/main_production.dart
       - run: flutter build appbundle -t lib/main_production.dart
       - name: Upload app bundle
         uses: actions/upload-artifact@v2
@@ -58,6 +57,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: appbundle
+      - run:
+          |
+          cat .github/workflows/upload_google_play.yaml
       - name: Release app to internal track
         uses: r0adkll/upload-google-play@v1.0.15
         with:
