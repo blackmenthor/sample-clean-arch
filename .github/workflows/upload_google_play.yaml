@@ -64,6 +64,5 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
           packageName: com.anggach.flutter_clean_arch
           releaseFile: app-release.aab
-          track: internal
-          # because app is still in Draft mode, these below line is needed
           status: draft
+          track: internal
